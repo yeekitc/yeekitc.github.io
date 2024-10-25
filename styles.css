@@ -1,3 +1,4 @@
+/* Core styles */
 html {
     scrollbar-gutter: stable;
 }
@@ -11,6 +12,7 @@ html {
     --highlight-color: #2eaadc;
 }
 
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +26,7 @@ body {
     line-height: 1.6;
 }
 
+/* Navigation styles */
 .navbar {
     position: sticky;
     top: 0;
@@ -69,10 +72,12 @@ body {
     font-weight: 500;
 }
 
+/* Common container and card styles */
 .container {
     max-width: 800px;
+    width: 100%;
     margin: 4rem auto;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 .section-title {
@@ -81,15 +86,17 @@ body {
     font-weight: 700;
 }
 
-/* About page specific styles */
-.card {
+.card,
+.contact-card,
+.work-card {
+    width: 100%;
     background-color: var(--card-background);
     border-radius: 12px;
     padding: 2rem;
-    margin-top: 2rem;
     border: 1px solid var(--border-color);
 }
 
+/* About page styles */
 .profile-section {
     display: flex;
     align-items: center;
@@ -148,17 +155,14 @@ body {
     color: var(--primary-color);
 }
 
-/* Work page specific styles */
+/* Work and Projects page styles */
 .work-grid {
+    width: 100%;
     display: grid;
     gap: 2rem;
 }
 
 .work-card {
-    background-color: var(--card-background);
-    border-radius: 12px;
-    padding: 2rem;
-    border: 1px solid var(--border-color);
     transition: transform 0.2s ease;
 }
 
@@ -186,6 +190,8 @@ body {
 
 .work-description {
     margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: var(--primary-color);
 }
 
 .tags {
@@ -203,13 +209,66 @@ body {
     border: 1px solid var(--border-color);
 }
 
-/* Contact page specific styles */
-.contact-card {
-    background-color: var(--card-background);
-    border-radius: 12px;
-    padding: 2rem;
+.projects-section {
+    margin-top: 4rem;
+}
+
+.project-list {
+    list-style-type: none;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.project-list li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.project-list li::before {
+    content: "•";
+    position: absolute;
+    left: -1.5rem;
+    color: var(--secondary-color);
+}
+
+/* Contact page styles */
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
     border: 1px solid var(--border-color);
-    margin-bottom: 2rem;
+}
+
+.contact-sections {
+    display: grid;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.subsection-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.quick-contact {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.message-section {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
 .contact-info {
@@ -219,14 +278,21 @@ body {
 .contact-method {
     display: flex;
     align-items: center;
+    padding: 1rem;
     margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
     text-decoration: none;
     color: var(--primary-color);
-    transition: transform 0.2s ease;
+    font-size: 1rem;
 }
 
 .contact-method:hover {
     transform: translateX(4px);
+    background-color: var(--background-color);
+    border-color: var(--primary-color);
 }
 
 .contact-icon {
@@ -259,27 +325,72 @@ input, textarea {
     background-color: var(--background-color);
 }
 
+input::placeholder,
+textarea::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.7;
+}
+
 textarea {
     min-height: 150px;
     resize: vertical;
 }
 
 button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 button:hover {
     opacity: 0.9;
+    transform: translateX(4px);
+}
+
+.contact-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: var(--secondary-color);
+}
+
+.location-note,
+.availability-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.emoji {
+    font-size: 1.2rem;
 }
 
 /* Responsive styles */
+@media (max-width: 840px) {
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .card,
+    .contact-card,
+    .work-card {
+        padding: 1.5rem;
+    }
+}
+
 @media (max-width: 640px) {
     .profile-section {
         flex-direction: column;
@@ -288,5 +399,20 @@ button:hover {
     
     .nav-links a {
         margin-left: 1rem;
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .intro-text {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .contact-sections {
+        gap: 2rem;
     }
 }
